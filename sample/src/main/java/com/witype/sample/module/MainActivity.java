@@ -5,12 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.witype.romvp.BaseActivity;
 import com.witype.romvp.IBasePresenter;
 import com.witype.sample.R;
-import com.witype.sample.presenter.ILoginPresenter;
+import com.witype.sample.contract.ILoginContract;
 
-public class MainActivity extends BaseActivity<MainPresenter> implements ILoginPresenter.ILoginView {
+public class MainActivity extends BaseActivity<MainPresenter> implements ILoginContract.ILoginView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,33 +38,5 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ILoginP
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onNetError() {
 
-    }
-
-    @Override
-    public void onError(String error) {
-
-    }
-
-    @Override
-    public void showProgress(String message, DialogInterface.OnCancelListener listener) {
-
-    }
-
-    @Override
-    public void shouldShowProgress() {
-
-    }
-
-    @Override
-    public void dismissProgress() {
-
-    }
-
-    @Override
-    public void shouldDismissProgress() {
-
-    }
 }

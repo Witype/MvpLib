@@ -17,7 +17,7 @@ import rx.Subscriber;
  * Created by WiType on 2016/4/25 0025.
  * tuteng
  */
-public abstract class HttpSubscriber<T> extends Subscriber<T> implements DialogInterface.OnCancelListener {
+public abstract class HttpSubscriber<E> extends Subscriber<E> implements DialogInterface.OnCancelListener {
 
     /* 是否显示错误提示，默认显示 */
     private boolean isShowToast     =   true;
@@ -43,7 +43,7 @@ public abstract class HttpSubscriber<T> extends Subscriber<T> implements DialogI
      *
      * @return
      */
-    public HttpSubscriber<T> disableToast() {
+    public HttpSubscriber<E> disableToast() {
         this.isShowToast = false;
         return this;
     }
@@ -52,7 +52,7 @@ public abstract class HttpSubscriber<T> extends Subscriber<T> implements DialogI
      *
      * @return
      */
-    public HttpSubscriber<T> disableWait() {
+    public HttpSubscriber<E> disableWait() {
         this.isShowWait = false;
         return this;
     }
@@ -61,7 +61,7 @@ public abstract class HttpSubscriber<T> extends Subscriber<T> implements DialogI
      *
      * @return
      */
-    public HttpSubscriber<T> disableAutoDismiss() {
+    public HttpSubscriber<E> disableAutoDismiss() {
         this.isAutoDismiss = false;
         return this;
     }
@@ -131,7 +131,7 @@ public abstract class HttpSubscriber<T> extends Subscriber<T> implements DialogI
      * @param t
      */
     @Override
-    public void onNext(T t) {
+    public void onNext(E t) {
         if (t instanceof ArrayList) {
             if (((ArrayList) t).size() > 0) onGetListSuccess(t);
             else onGetListNo();
@@ -145,7 +145,7 @@ public abstract class HttpSubscriber<T> extends Subscriber<T> implements DialogI
      *
      * @param t
      */
-    public void onGetListSuccess(T t) {}
+    public void onGetListSuccess(E t) {}
 
     /**
      *

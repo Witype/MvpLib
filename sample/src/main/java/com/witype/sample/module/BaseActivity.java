@@ -1,9 +1,12 @@
-package com.witype.romvp;
+package com.witype.sample.module;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.witype.romvp.IBasePresenter;
+import com.witype.romvp.IBaseView;
 import com.witype.romvp.impl.BasePresenter;
 
 /**
@@ -12,22 +15,23 @@ import com.witype.romvp.impl.BasePresenter;
  * Desc:
  */
 
-public abstract class BaseActivity<T> extends Activity implements IBaseView {
+public abstract class BaseActivity<T extends IBasePresenter> extends Activity implements IBaseView {
 
     private T presenter;
 
     private long lastStartActivityTime;
 
-    @SuppressWarnings("all")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = (T) initPresenter();
-        ((IBasePresenter)presenter).onCreate();
+        presenter = initPresenter();
+        presenter.onCreate();
     }
 
-    public IBasePresenter initPresenter() {
-        return new BasePresenter<>(this);
+    @SuppressWarnings("All")
+    public T initPresenter() {
+        presenter = (T) new BasePresenter<>(this);
+        return presenter;
     }
 
     @Override
@@ -53,5 +57,35 @@ public abstract class BaseActivity<T> extends Activity implements IBaseView {
         super.onDestroy();
         ((IBasePresenter)presenter).onDestroy();
         presenter = null;
+    }
+
+    @Override
+    public void onNetError() {
+
+    }
+
+    @Override
+    public void onError(String error) {
+
+    }
+
+    @Override
+    public void showProgress(String message, DialogInterface.OnCancelListener listener) {
+
+    }
+
+    @Override
+    public void shouldShowProgress() {
+
+    }
+
+    @Override
+    public void dismissProgress() {
+
+    }
+
+    @Override
+    public void shouldDismissProgress() {
+
     }
 }

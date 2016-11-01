@@ -3,7 +3,7 @@ package com.witype.sample.module;
 import android.os.Handler;
 
 import com.witype.romvp.impl.BasePresenter;
-import com.witype.sample.presenter.ILoginPresenter;
+import com.witype.sample.contract.ILoginContract;
 
 
 /**
@@ -12,9 +12,9 @@ import com.witype.sample.presenter.ILoginPresenter;
  * Desc:
  */
 
-public class MainPresenter extends BasePresenter<ILoginPresenter.ILoginView> implements ILoginPresenter {
+public class MainPresenter extends BasePresenter<ILoginContract.ILoginView> implements ILoginContract.ILoginPresenter {
 
-    public MainPresenter(ILoginPresenter.ILoginView iLoginView) {
+    public MainPresenter(ILoginContract.ILoginView iLoginView) {
         super(iLoginView);
     }
 

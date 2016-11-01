@@ -18,11 +18,11 @@ public interface IBaseView<T> {
 
     Activity getAppActivity();
 
-    void showToast(String message);
-
     void onNetError();
 
     void onError(String error);
+
+    void showToast(String message);
 
     void showProgress(String message, DialogInterface.OnCancelListener listener);
 
